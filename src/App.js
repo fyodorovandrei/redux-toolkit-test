@@ -21,10 +21,10 @@ function App() {
                     <Layout className={styles.layout}>
                         <Content className={styles.content}>
                             <Switch>
-                                <Route path="/people">
+                                <Route path={['/people', '/planet/:id']}>
                                     <People />
                                 </Route>
-                                <Route path="/">
+                                <Route exact path="/">
                                     <Home />
                                 </Route>
                             </Switch>

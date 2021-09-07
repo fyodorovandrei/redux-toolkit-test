@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPeople, selectPeople } from '../store/slices/people';
 import moment from 'moment';
+import { Link, Route } from 'react-router-dom';
 import { Row, Col, Table, Input, notification } from 'antd';
 
 const { Search } = Input;
 
 import styles from './People.module.scss';
+import Planet from './Planet';
 
 let searchTimeout;
 const SEARCH_TIMEOUT = 500;
@@ -26,7 +28,19 @@ const columns = [
         key: 'edited',
         render: (date) => moment(date).format('DD/MM/YYYY')
     },
-    { title: 'Planet', dataIndex: 'homeworld', key: 'homeworld' }
+    {
+        title: 'Planet',
+        dataIndex: 'homeworld',
+        key: 'homeworld',
+        render: (str) => {
+            const id = str
+                .split('/')
+                .filter((i) => i)
+                .reverse()[0];
+
+            return <Link to={`/planet/${id}`}>{`Planet ${id}`}</Link>;
+        }
+    }
 ];
 
 const People = () => {
@@ -76,6 +90,9 @@ const People = () => {
 
     return (
         <div className={styles.people}>
+            <Route exact path="/planet/:id">
+                <Planet />
+            </Route>
             <Row>
                 <Col span={4} offset={20}>
                     <Search
