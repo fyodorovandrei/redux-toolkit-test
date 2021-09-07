@@ -1,8 +1,8 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitFor } from '@testing-library/react';
 import App from './App';
 
-test('renders learn react link', () => {
+test('render left menu', async () => {
     render(<App />);
-    const linkElement = screen.getByText(/learn react/i);
-    expect(linkElement).toBeInTheDocument();
+    const linkElement = await waitFor(() => screen.getByText(/People/i));
+    expect(linkElement.closest('a')).toHaveAttribute('href', '/people');
 });
