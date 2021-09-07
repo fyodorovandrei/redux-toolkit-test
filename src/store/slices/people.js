@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 export const fetchPeople = createAsyncThunk(
-    'products/fetchProducts',
+    'people/fetchPeople',
     async ({ page, search }, thunkApi) => {
         try {
             const searchParams = new URLSearchParams();
