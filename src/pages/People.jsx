@@ -5,10 +5,10 @@ import moment from 'moment';
 import { Link, Route } from 'react-router-dom';
 import { Row, Col, Table, Input, notification } from 'antd';
 
-const { Search } = Input;
-
-import styles from './People.module.scss';
 import Planet from './Planet';
+
+const { Search } = Input;
+import styles from './People.module.scss';
 
 let searchTimeout;
 const SEARCH_TIMEOUT = 500;
