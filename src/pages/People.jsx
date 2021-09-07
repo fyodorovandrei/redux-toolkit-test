@@ -94,7 +94,7 @@ const People = () => {
                 <Planet />
             </Route>
             <Row>
-                <Col span={4} offset={20}>
+                <Col span={8} offset={16}>
                     <Search
                         className={styles.searchInput}
                         placeholder="Find people by name"
